@@ -90,7 +90,7 @@ ocpi:
     # url
     url: ${OCPI_URL|http://localhost:8996}
     # api key
-    api-key: ${OCPI_SDK_APIKEY|93daf25d-af3b-4e86-85a6-5638352fd6fe}
+    api-key: ${OCPI_SDK_APIKEY|}
     # platform configuration
     platform:
       # platform id
@@ -98,7 +98,7 @@ ocpi:
       # platform name
       name: ${OCPI_LOCAL_PLATFORM_NAME|}
       # token A
-      token-a: ${OCPI_LOCAL_PLATFORM_TOKEN_A|820940e6-ca2e-4d47-9ca8-2cad7f5424b2}
+      token-a: ${OCPI_LOCAL_PLATFORM_TOKEN_A|}
       # platform role
       role: ${OCPI_LOCAL_PLATFORM_ROLE|HUB}
       # protocol versions
@@ -107,9 +107,9 @@ ocpi:
     # party configuration
     party:
       # party id
-      party-id: ${OCPI_LOCAL_PARTY|EVG}
+      party-id: ${OCPI_LOCAL_PARTY|TEST}
       # party code
-      country-code: ${OCPI_LOCAL_PARTY_COUNTRY|RU}
+      country-code: ${OCPI_LOCAL_PARTY_COUNTRY|RS}
       # party role
       roles: ${OCPI_LOCAL_PARTY_ROLE|HUB}
     # webhook configuration
@@ -131,7 +131,7 @@ ocpi:
     # name
     name: ${OCPIEM_LOCAL_PLATFORM_NAME|}
     # token A
-    token-a: ${OCPIEM_LOCAL_PLATFORM_TOKEN_A|820940e6-ca2e-4d47-9ca8-2cad7f5424b5}
+    token-a: ${OCPIEM_LOCAL_PLATFORM_TOKEN_A|}
     # role
     role: ${OCPIEM_LOCAL_PLATFORM_ROLE|HUB}
     # version endpoint
@@ -139,7 +139,7 @@ ocpi:
     # url
     url: ${OCPIEM_URL|http://localhost:8994}
     # api key
-    api-key: ${OCPIEM_SDK_APIKEY|475df0f6-7483-485a-bbc0-3cec8aea99e8}
+    api-key: ${OCPIEM_SDK_APIKEY|}
 
 # test block
 tests:
