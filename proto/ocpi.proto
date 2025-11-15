@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package ocpi;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "proto/ocpi";
+
+message EmptyResponse {}
+
+// empty request
+message EmptyRequest {}
+
+// Request pulling data from the remote platforms for the period of time
+message RemotePullRequest {
+    google.protobuf.Timestamp from = 1;  // from time
+    google.protobuf.Timestamp to = 2;    // to time
+}
+
+service RemotePullService {
+    // PullParties retrieves parties data from remote platforms
+    rpc PullParties (EmptyRequest) returns (EmptyResponse) {}
+    // PullHubClientInfo retrieves client info data from remote platforms
+    rpc PullHubClientInfo (RemotePullRequest) returns (EmptyResponse) {}
+    // PullHubClientInfo retrieves client info data from remote platforms when platforms don't support push
+    rpc PullHubClientInfoWhenPushNotSupported (RemotePullRequest) returns (EmptyResponse) {}
+    // PullLocations retrieves locations data from remote platforms
+    rpc PullLocations (RemotePullRequest) returns (EmptyResponse) {}
+    // PullLocations retrieves locations data from remote platforms when platforms don't support push
+    rpc PullLocationsWhenPushNotSupported (RemotePullRequest) returns (EmptyResponse) {}
+    // PullTariffs retrieves tariffs data from remote platforms
+    rpc PullTariffs (RemotePullRequest) returns (EmptyResponse) {}
+    // PullTariffs retrieves tariffs data from remote platforms when platforms don't support push
+    rpc PullTariffsWhenPushNotSupported (RemotePullRequest) returns (EmptyResponse) {}
+    // PullTokens retrieves tokens data from remote platforms
+    rpc PullTokens (RemotePullRequest) returns (EmptyResponse) {}
+    // PullTokens retrieves tokens data from remote platforms when platforms don't support push
+    rpc PullTokensWhenPushNotSupported (RemotePullRequest) returns (EmptyResponse) {}
+    // PullSessions retrieves sessions data from remote platforms
+    rpc PullSessions (RemotePullRequest) returns (EmptyResponse) {}
+    // PullSessions retrieves sessions data from remote platforms when platforms don't support push
+    rpc PullSessionsWhenPushNotSupported (RemotePullRequest) returns (EmptyResponse) {}
+    // PullSessions retrieves sessions data from remote platforms
+    rpc PullCdrs (RemotePullRequest) returns (EmptyResponse) {}
+    // PullSessions retrieves sessions data from remote platforms when platforms don't support push
+    rpc PullCdrsWhenPushNotSupported (RemotePullRequest) returns (EmptyResponse) {}
+}

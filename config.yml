@@ -1,0 +1,147 @@
+# grpc configuration
+grpc:
+  # host (mostly used for grpc tests to connect from client)
+  host: ${OCPI_GRPC_HOST|localhost}
+  # grpc port
+  port: ${OCPI_GRPC_PORT|52064}
+  # enabling tracing all the requests/responses
+  trace: ${OCPI_GRPC_TRACE|false}
+
+# http server configuration
+http:
+  # listens on port
+  port: 8996
+  # trace requests/responses
+  trace: ${HTTP_TRACE_ENABLED|false}
+  # write-timeout-sec normally covers the time from the end of the request header read to the end of the response write
+  # but in HTTPS covers the packets written as part of the TLS handshake
+  write-timeout-sec: ${HTTP_WRITE_TIMEOUT_SEC|60}
+  # read-timeout-sec covers the time from when the connection is accepted to when the request body is fully read
+  read-timeout-sec: ${HTTP_READ_TIMEOUT_SEC|60}
+  # http server write buffer size
+  write-buffer-size-bytes: ${HTTP_WRITE_BUFFER_SIZE_BYTES|1024}
+  # http server read buffer size
+  read-buffer-size-bytes: ${HTTP_READ_BUFFER_SIZE_BYTES|1024}
+
+# storages configuration
+storages:
+  # database client
+  database:
+    # local path to migration folder
+    mig-path: ${ROOT|}/ocpi/db/migrations
+    # db master config
+    master:
+      # database name
+      dbname: ${OCPI_DB_MASTER_NAME|}
+      # db username
+      user: ocpi
+      # db password
+      password: ${OCPI_DB_MASTER_PASSWORD|ocpi}
+      # db port
+      port: ${OCPI_DB_MASTER_PORT|35432}
+      # host for master (read-write) database
+      host: ${OCPI_DB_MASTER_HOST|localhost}
+    # db slave config
+    slave:
+      # database name
+      dbname: ${OCPI_DB_SLAVE_NAME|}
+      # db username
+      user: ocpi
+      # db password
+      password: ${OCPI_DB_SLAVE_PASSWORD|ocpi}
+      # db port
+      port: ${OCPI_DB_SLAVE_PORT|35432}
+      # host for master (read-write) database
+      host: ${OCPI_DB_SLAVE_HOST|localhost}
+
+# logging configuration
+log:
+  # level
+  level: ${OCPI_LOG_LEVEL|trace}
+  # output format (plain, json)
+  format: ${OCPI_LOG_FORMAT|plain}
+  # if service info is appeared in log
+  service: ${OCPI_LOG_SERVICE|true}
+  # if context info is appeared in log
+  context: ${OCPI_LOG_CONTEXT|true}
+
+# monitoring
+monitoring:
+  # enabled
+  enabled: ${OCPI_MONITORING_ENABLED|false}
+  # on which port metrics are exposed
+  port: ${OCPI_MONITORING_PORT|9000}
+  # on which url metrics are exposed
+  url: /metrics
+  # indicates to expose internal GO engine metrics
+  go-metrics: ${OCPI_GOMETRICS_ENABLED|false}
+
+# profiling
+profile:
+  # profiling enabled
+  enabled: ${OCPI_PROFILE_ENABLED|false}
+  # port on which profile dump is available
+  port: ${OCPI_PROFILE_PORT|52002}
+
+# ocpi configuration
+ocpi:
+  # configuration of the local platform
+  local:
+    # url
+    url: ${OCPI_URL|http://localhost:8996}
+    # api key
+    api-key: ${OCPI_SDK_APIKEY|93daf25d-af3b-4e86-85a6-5638352fd6fe}
+    # platform configuration
+    platform:
+      # platform id
+      id: ${OCPI_LOCAL_PLATFORM_ID|}
+      # platform name
+      name: ${OCPI_LOCAL_PLATFORM_NAME|}
+      # token A
+      token-a: ${OCPI_LOCAL_PLATFORM_TOKEN_A|820940e6-ca2e-4d47-9ca8-2cad7f5424b2}
+      # platform role
+      role: ${OCPI_LOCAL_PLATFORM_ROLE|HUB}
+      # protocol versions
+      versions:
+        - 2.2.1
+    # party configuration
+    party:
+      # party id
+      party-id: ${OCPI_LOCAL_PARTY|EVG}
+      # party code
+      country-code: ${OCPI_LOCAL_PARTY_COUNTRY|RU}
+      # party role
+      roles: ${OCPI_LOCAL_PARTY_ROLE|HUB}
+    # webhook configuration
+    webhook:
+      # mock
+      mock: ${OCPI_LOCAL_WEBHOOK_MOCK|false}
+      # timeout
+      timeout: ${OCPI_LOCAL_WEBHOOK_TIMEOUT|10}
+  # remote platforms config
+  remote:
+    # mock
+    mock: ${OCPI_REMOTE_PLATFORM_MOCK|false}
+    # timeout
+    timeout: ${OCPI_REMOTE_TO|60}
+  # emulator config
+  emulator:
+    # id
+    id: ${OCPIEM_LOCAL_PLATFORM_ID|}
+    # name
+    name: ${OCPIEM_LOCAL_PLATFORM_NAME|}
+    # token A
+    token-a: ${OCPIEM_LOCAL_PLATFORM_TOKEN_A|820940e6-ca2e-4d47-9ca8-2cad7f5424b5}
+    # role
+    role: ${OCPIEM_LOCAL_PLATFORM_ROLE|HUB}
+    # version endpoint
+    version-ep: ${OCPIEM_VERSION_EP|http://localhost:8994/ocpi/versions}
+    # url
+    url: ${OCPIEM_URL|http://localhost:8994}
+    # api key
+    api-key: ${OCPIEM_SDK_APIKEY|475df0f6-7483-485a-bbc0-3cec8aea99e8}
+
+# test block
+tests:
+  # webhook url
+  webhook-url: ${TESTS_OCPI_WEBHOOK_URL|http://localhost:7890/test/webhook}
